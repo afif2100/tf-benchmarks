@@ -2048,7 +2048,7 @@ class BenchmarkCNN(object):
         log_fn('-' * 64)
         log_fn(f"Finish Time: {time.time()}")
         log_fn('-' * 64)
-        sleep(5*60)
+        time.sleep(5*60)
 
       if self.benchmark_logger:
         eval_result = {
