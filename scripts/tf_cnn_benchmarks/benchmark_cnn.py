@@ -2502,7 +2502,9 @@ class BenchmarkCNN(object):
       log_fn('-' * 64)
       # TODO(laigd): rename 'images' to maybe 'inputs'.
       log_fn('total images/sec: %.2f' % images_per_sec)
+      log_fn(f"Finish Time: {time.time()}")
       log_fn('-' * 64)
+      time.sleep(5*60)
     else:
       log_fn('Done with training')
     num_steps_since_last_eval = local_step - last_eval_step
