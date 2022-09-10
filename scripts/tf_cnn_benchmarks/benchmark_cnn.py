@@ -62,7 +62,7 @@ from tensorflow.python.platform import gfile
 from tensorflow.python.util import nest
 
 
-_DEFAULT_NUM_BATCHES = 1000
+_DEFAULT_NUM_BATCHES = 300
 
 
 # GraphInfo encapsulates the tensors/ops that we care about after building a
@@ -2403,7 +2403,7 @@ class BenchmarkCNN(object):
     while not done_fn():
       if local_step == 0:
         log_fn('Done warm up')
-        log_fn(f'Start Time : {time.time())}')
+        log_fn(f'Start Time : {time.time()}')
         if graph_info.execution_barrier:
           log_fn('Waiting for other replicas to finish warm up')
           sess.run([graph_info.execution_barrier])
