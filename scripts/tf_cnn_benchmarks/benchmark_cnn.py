@@ -62,7 +62,7 @@ from tensorflow.python.platform import gfile
 from tensorflow.python.util import nest
 
 
-_DEFAULT_NUM_BATCHES = 100
+_DEFAULT_NUM_BATCHES = 1000
 
 
 # GraphInfo encapsulates the tensors/ops that we care about after building a
@@ -2046,6 +2046,10 @@ class BenchmarkCNN(object):
         log_fn('-' * 64)
         log_fn('total images/sec: %.2f' % images_per_sec)
         log_fn('-' * 64)
+        log_fn(f'Finish Time : {time.time())}')
+        log_fn('-' * 64)
+        sleep(5*60)
+
       if self.benchmark_logger:
         eval_result = {
             'eval_top_1_accuracy', accuracy_at_1,
@@ -2399,6 +2403,7 @@ class BenchmarkCNN(object):
     while not done_fn():
       if local_step == 0:
         log_fn('Done warm up')
+        log_fn(f'Start Time : {time.time())}')
         if graph_info.execution_barrier:
           log_fn('Waiting for other replicas to finish warm up')
           sess.run([graph_info.execution_barrier])
